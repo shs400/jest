@@ -4,14 +4,17 @@ exports[`NameFrom matches snapshot 1`] = `
 <form
   onSubmit={[Function]}
 >
-  <label>
+  <label
+    htmlFor="name"
+  >
     이름
+    <input
+      id="name"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
   </label>
-  <input
-    onChange={[Function]}
-    type="text"
-    value=""
-  />
   <button
     type="submit"
   >

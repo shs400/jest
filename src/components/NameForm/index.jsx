@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class NameForm extends Component {
-  static defaultProps = {
-    onSubmit: () => console.warn('onSubmit not defined'),
+  static propTypes = {
+    onInsert: PropTypes.func,
   }
+
+  static defaultProps = {
+    onInsert: () => {},
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
-    }
+      name: '',
+    };
   }
 
   onChange = (e) => {
     this.setState({
-      name: e.target.value
+      name: e.target.value,
     });
   }
 
@@ -25,8 +31,8 @@ class NameForm extends Component {
     if (!name) return false;
 
     onInsert(name);
-    this.setState({
-      name: ''
+    return this.setState({
+      name: '',
     });
   }
 
@@ -34,8 +40,10 @@ class NameForm extends Component {
     const { name } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
-        <label>이름</label>
-        <input type="text" value={name} onChange={this.onChange} />
+        <label htmlFor="name">
+          이름
+          <input type="text" id="name" value={name} onChange={this.onChange} />
+        </label>
         <button type="submit">등록</button>
       </form>
     );

@@ -1,32 +1,29 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Counter from './index';
+configure({ adapter: new Adapter() });
 
 describe('Counter', () => {
   let component = null;
 
   it('renders correctly', () => {
-    component = renderer.create(<Counter />);
+    component = shallow(<Counter />);
   });
 
   it('matches snapshot', () => {
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
-  //increase 가 잘 되는지 확인
   it('increases correctly', () => {
-    component.getInstance().onIncrease();
-    expect(component.getInstance().state.value).toBe(2); // value 값이 2인지 확인
-    const tree = component.toJSON(); // re-render
-    expect(tree).toMatchSnapshot(); // 스냅샷 비교
+    component.instance().onIncrease();
+    expect(component.state().value).toBe(2);
+    expect(component).toMatchSnapshot();
   });
 
-  // decrease 가 잘 되는지 확인
   it('decreases correctly', () => {
-    component.getInstance().onDecrease();
-    expect(component.getInstance().state.value).toBe(1); // value 값이 1인지 확인
-    const tree = component.toJSON(); // re-render
-    expect(tree).toMatchSnapshot(); // 스냅샷 비교
+    component.instance().onDecrease();
+    expect(component.state().value).toBe(1);
+    expect(component).toMatchSnapshot();
   });
 });

@@ -10,11 +10,13 @@ exports[`Counter decreases correctly 1`] = `
   </h2>
   <button
     onClick={[Function]}
+    type="button"
   >
     +
   </button>
   <button
     onClick={[Function]}
+    type="button"
   >
     -
   </button>
@@ -31,11 +33,13 @@ exports[`Counter increases correctly 1`] = `
   </h2>
   <button
     onClick={[Function]}
+    type="button"
   >
     +
   </button>
   <button
     onClick={[Function]}
+    type="button"
   >
     -
   </button>
@@ -52,11 +56,13 @@ exports[`Counter matches snapshot 1`] = `
   </h2>
   <button
     onClick={[Function]}
+    type="button"
   >
     +
   </button>
   <button
     onClick={[Function]}
+    type="button"
   >
     -
   </button>

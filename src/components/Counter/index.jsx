@@ -4,16 +4,16 @@ class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1
-    }
+      value: 1,
+    };
   }
 
   onIncrease = () => {
-    this.setState(({value}) => ({ value: value + 1 }));
+    this.setState(({ value }) => ({ value: value + 1 }));
   }
 
   onDecrease = () => {
-    this.setState(({value}) => ({ value: value <= 0 ? value : value - 1 }));
+    this.setState(({ value }) => ({ value: value <= 0 ? value : value - 1 }));
   }
 
   render() {
@@ -22,8 +22,8 @@ class Counter extends Component {
       <div>
         <h1>카운터</h1>
         <h2>{value}</h2>
-        <button onClick={this.onIncrease}>+</button>
-        <button onClick={this.onDecrease}>-</button>
+        <button type="button" onClick={this.onIncrease}>+</button>
+        <button type="button" onClick={this.onDecrease}>-</button>
       </div>
     );
   }
