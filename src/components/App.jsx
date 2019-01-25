@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Counter from './Counter/index';
+// import Counter from './Counter/index';
+import Counter from '../containers/Counter'
 import NameForm from './NameForm/index';
 import NameList from './NameList/index';
 

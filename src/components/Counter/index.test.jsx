@@ -17,13 +17,13 @@ describe('Counter', () => {
 
   it('increases correctly', () => {
     component.instance().onIncrease();
-    expect(component.state().value).toBe(2);
+    expect(component.state().value).toBe(1);
     expect(component).toMatchSnapshot();
   });
 
   it('decreases correctly', () => {
     component.instance().onDecrease();
-    expect(component.state().value).toBe(1);
+    expect(component.state().value).toBe(0);
     expect(component).toMatchSnapshot();
   });
 });

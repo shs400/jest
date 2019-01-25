@@ -8,18 +8,20 @@ exports[`Counter decreases correctly 1`] = `
   <h2>
     1
   </h2>
-  <button
-    onClick={[Function]}
-    type="button"
-  >
-    +
-  </button>
-  <button
-    onClick={[Function]}
-    type="button"
-  >
-    -
-  </button>
+  <div>
+    <Button
+      className="increase"
+      label="+"
+      onClick={[Function]}
+      type="button"
+    />
+    <Button
+      className="decrease"
+      label="-"
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
 </div>
 `;
 
@@ -31,18 +33,20 @@ exports[`Counter increases correctly 1`] = `
   <h2>
     2
   </h2>
-  <button
-    onClick={[Function]}
-    type="button"
-  >
-    +
-  </button>
-  <button
-    onClick={[Function]}
-    type="button"
-  >
-    -
-  </button>
+  <div>
+    <Button
+      className="increase"
+      label="+"
+      onClick={[Function]}
+      type="button"
+    />
+    <Button
+      className="decrease"
+      label="-"
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
 </div>
 `;
 
@@ -52,19 +56,21 @@ exports[`Counter matches snapshot 1`] = `
     카운터
   </h1>
   <h2>
-    1
+    0
   </h2>
-  <button
-    onClick={[Function]}
-    type="button"
-  >
-    +
-  </button>
-  <button
-    onClick={[Function]}
-    type="button"
-  >
-    -
-  </button>
+  <div>
+    <Button
+      className="increase"
+      label="+"
+      onClick={[Function]}
+      type="button"
+    />
+    <Button
+      className="decrease"
+      label="-"
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
 </div>
 `;
