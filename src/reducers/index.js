@@ -1,21 +1,19 @@
 import * as Types from '../actions';
 import { combineReducers } from 'redux';
+import { Map } from 'immutable';
 
-const counterInitState = {
+const counterInitState = Map({
   value: 0,
   diff: 1
-};
+});
 
 const counter = ( state = counterInitState, action) => {
   switch(action.type) {
     case Types.INCREMEMT:
-      return Object.assign({}, state, {
-        value: state.value + state.diff
-      });
+      return state.update('value', () => state.get('value') + state.get('diff'));
     case Types.DECREMENT:
-      return Object.assign({}, state, {
-        value: state.value <= 0 ? state.value : state.value - state.diff
-      });
+      const minDecrement = state.get('value') <= 0 ? state.get('value') : state.get('value') - state.get('diff');
+      return state.update('value', () => minDecrement);
     case Types.SET_DIFF:
       return Object.assign({}, state, {
         diff: action.diff

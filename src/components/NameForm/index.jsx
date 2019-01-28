@@ -18,8 +18,9 @@ class NameForm extends Component {
   }
 
   onChange = (e) => {
+    const { value } = e.target
     this.setState({
-      name: e.target.value,
+      name: value,
     });
   }
 
@@ -29,7 +30,6 @@ class NameForm extends Component {
     const { onInsert } = this.props;
     // 이름을 추가하고, name 값 초기화
     if (!name) return false;
-
     onInsert(name);
     return this.setState({
       name: '',

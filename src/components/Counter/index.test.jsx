@@ -7,8 +7,15 @@ configure({ adapter: new Adapter() });
 describe('Counter', () => {
   let component = null;
 
+  const mockData = {
+    counter: {
+      increment: () => {},
+      decrement: () => {}
+    }
+  }
+
   it('renders correctly', () => {
-    component = shallow(<Counter />);
+    component = shallow(<Counter { ...mockData } />);
   });
 
   it('matches snapshot', () => {

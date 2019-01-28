@@ -6,7 +6,7 @@ exports[`Counter decreases correctly 1`] = `
     카운터
   </h1>
   <h2>
-    1
+    0
   </h2>
   <div>
     <Button
@@ -31,7 +31,7 @@ exports[`Counter increases correctly 1`] = `
     카운터
   </h1>
   <h2>
-    2
+    1
   </h2>
   <div>
     <Button
