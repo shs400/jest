@@ -2,48 +2,50 @@ import React, { Component } from 'react';
 // import Counter from './Counter/index';
 import Counter from '../containers/Counter'
 import NameForm from './NameForm/index';
-import NameList from './UserList/index';
-import { Record, Map, List } from 'immutable';
+import UserList from './UserList/index';
+import { produce } from 'immer';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: Data({
+      data: {
         input: '',
-        users: List([
-          User({
+        users: [
+          {
             id: 1,
             name: '로이'
-          }),
-          User({
+          },
+          {
             id: 2,
             name: '심현수'
-          })
-        ])
-      })
+          }
+        ]
+      }
     };
   }
 
   onChange = (e) => {
     const { value } = e.target;
-    const { data } = this.state;
 
-    this.setState({
-      data: data.set('input', value)
-    });
+    this.setState(
+      produce(draft => {
+        data: draft.set('input', value)
+      })
+    )
   };
 
-  onInsert = (name) => {
-    const { data } = this.state;
+  onInsert = (name, id) => {
     const addUser = {
-      id: ++ data.toJS().users.length,
+      id,
       name
     };
 
-    this.setState({
-      data: data.update('users', users => users.push(Map(addUser)))
-    });
+    this.setState(
+      produce(draft => {
+        draft.data.users.push(addUser)
+      })
+    )
   };
 
   render() {
@@ -57,20 +59,12 @@ class App extends Component {
         <NameForm
           onChange={this.onChange}
           onInsert={this.onInsert}
+          idCount={users.length}
         />
-        <NameList users={users} />
+        <UserList users={users} />
       </div>
     );
   }
 }
-
-const User = Record({
-  id: null,
-  name: null,
-});
-
-const Data = Record({
-  users: List()
-});
 
 export default App;

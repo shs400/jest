@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import UserList from "./item";
+import ItemList from "./item";
 import PropTypes from 'prop-types';
 
-class NameList extends Component {
+class UserList extends Component {
   static propTypes = {
-    users: PropTypes.object,
+    users: PropTypes.array,
   }
 
   static defaultProps = {
-    users: {},
+    users: [],
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -17,7 +17,7 @@ class NameList extends Component {
 
   renderList() {
     const { users } = this.props;
-    return users.map((user) => <UserList key={`${user.get('id')}_key`} user={user} />);
+    return users.map((user) => <ItemList key={`${user.id}_key`} user={user} />);
   }
 
   render() {
@@ -29,4 +29,4 @@ class NameList extends Component {
   }
 }
 
-export default NameList;
+export default UserList;

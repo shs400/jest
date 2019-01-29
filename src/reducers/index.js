@@ -1,27 +1,34 @@
 import * as Types from '../actions';
 import { combineReducers } from 'redux';
-import { Map } from 'immutable';
+import { produce } from 'immer';
 
-const counterInitState = Map({
+const counterInitState = {
   value: 0,
   diff: 1
-});
+};
 
-const counter = ( state = counterInitState, action) => {
+const counter = produce((draft, action) => {
   switch(action.type) {
     case Types.INCREMEMT:
-      return state.update('value', () => state.get('value') + state.get('diff'));
+      return {
+        value: draft.value + draft.diff,
+        diff: draft.diff
+      }
     case Types.DECREMENT:
-      const minDecrement = state.get('value') <= 0 ? state.get('value') : state.get('value') - state.get('diff');
-      return state.update('value', () => minDecrement);
+      const minDecrement = draft.value <= 0 ? draft.value : draft.value - draft.diff;
+      return {
+        value: minDecrement,
+        diff: draft.diff
+      }
     case Types.SET_DIFF:
-      return Object.assign({}, state, {
-        diff: action.diff
-      });
+      return {
+        value: draft.value,
+        diff: draft.diff
+      }
     default:
-      return state;
+      return draft;
   }
-};
+}, counterInitState);
 
 const extra = (state = { value: 'this_is_extra_reducer' }, action) => {
   switch(action.type) {

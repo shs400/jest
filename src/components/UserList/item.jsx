@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-class UserList extends Component {
+class ItemList extends Component {
   static propTypes = {
     user: PropTypes.object,
   }
@@ -16,7 +16,7 @@ class UserList extends Component {
 
   render() {
     const { user } = this.props;
-    const { name, id } = user.toJS();
+    const { name, id } = user;
     return (
       <div>
         <li className={`list_${id}`} key={id}>{name}</li>
@@ -25,4 +25,4 @@ class UserList extends Component {
   }
 }
 
-export default UserList;
+export default ItemList;

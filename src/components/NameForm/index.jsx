@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 class NameForm extends Component {
   static propTypes = {
     onInsert: PropTypes.func,
+    idCount: PropTypes.number
   }
 
   static defaultProps = {
     onInsert: () => {},
+    idCount: -1,
   }
 
   constructor(props) {
@@ -27,10 +29,11 @@ class NameForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { name } = this.state;
-    const { onInsert } = this.props;
+    const { onInsert, idCount } = this.props;
+    const id = idCount + 1;
     // 이름을 추가하고, name 값 초기화
     if (!name) return false;
-    onInsert(name);
+    onInsert(name, id);
     return this.setState({
       name: '',
     });
