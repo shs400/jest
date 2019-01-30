@@ -27,12 +27,9 @@ class App extends Component {
 
   onChange = (e) => {
     const { value } = e.target;
-
-    this.setState(
-      produce(draft => {
-        data: draft.set('input', value)
-      })
-    )
+    this.setState({
+      input: value
+    })
   };
 
   onInsert = (name, id) => {

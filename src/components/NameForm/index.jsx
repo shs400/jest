@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 class NameForm extends Component {
   static propTypes = {
     onInsert: PropTypes.func,
+    onChange: PropTypes.func,
     idCount: PropTypes.number
   }
 
   static defaultProps = {
     onInsert: () => {},
+    onChange: () => {},
     idCount: -1,
   }
 
@@ -20,7 +22,10 @@ class NameForm extends Component {
   }
 
   onChange = (e) => {
-    const { value } = e.target
+    const { value } = e.target;
+    const { onChange } = this.props;
+
+    onChange(e);
     this.setState({
       name: value,
     });
